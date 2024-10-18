@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+  Scientific Calculator (React + Make.com)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Scientific Calculator (React + Make.com)
 
-## Available Scripts
+This project is a **scientific calculator** built with **React**, utilizing a webhook powered by **Make.com** to process and evaluate mathematical expressions. It supports basic arithmetic, trigonometric, logarithmic, and other advanced mathematical operations.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+*   Basic arithmetic: Addition, subtraction, multiplication, division
+*   Advanced operations: Square, square root, exponents, trigonometric functions (sin, cos, tan), logarithmic functions (log, ln)
+*   Input validation and spacing for better readability
+*   External API/webhook integration using **Make.com** to evaluate expressions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+*   React (Frontend)
+*   Make.com (Webhook for backend processing)
+*   JavaScript (Expression handling)
+*   Tailwind CSS (Styling)
 
-### `npm test`
+## Setup Instructions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1.  Clone this repository: `git clone https://github.com/your-username/scientific-calculator.git`
+2.  Navigate to the project directory: `cd scientific-calculator`
+3.  Install dependencies: `npm install`
+4.  Create a `.env` file and add your Make.com webhook URL as an environment variable:
 
-### `npm run build`
+```
+REACT_APP_WEBHOOK_URL=your-make-webhook-url
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+6.  Start the app: `npm start`
+7.  To build for production: `npm run build`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Make.com Webhook Integration
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project uses a **Make.com** webhook to process mathematical expressions. The React app sends an expression to the webhook, which evaluates it using a mathematical library and returns the result. The result is then displayed in the app.
 
-### `npm run eject`
+Make sure to set up a scenario in Make.com that processes the incoming request and calculates the result.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Webhook Example
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    const math = require('mathjs');
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    function handleExpression(expression) {
+      try {
+        const result = math.evaluate(expression);
+        return { result };
+      } catch (error) {
+        return { result: "Error" };
+      }
+    }
+  
+```
 
-## Learn More
+## Deployment on Vercel
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1.  Ensure the **Make.com** webhook URL is publicly accessible.
+2.  Deploy your app to Vercel using either:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+*   **Vercel CLI**: Run `vercel` in your terminal.
+*   **GitHub Integration**: Push your project to GitHub and connect it to Vercel.
 
-### Code Splitting
+4.  Set your webhook URL as an environment variable in Vercel's dashboard (Settings > Environment Variables).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Future Enhancements
 
-### Analyzing the Bundle Size
+*   Add more advanced mathematical operations
+*   Improve UI/UX
+*   Enhance error handling for invalid expressions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributing
 
-### Making a Progressive Web App
+If you would like to contribute to this project, please fork the repository and submit a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## License
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License.
